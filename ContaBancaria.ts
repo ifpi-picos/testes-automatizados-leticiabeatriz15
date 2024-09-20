@@ -1,8 +1,9 @@
+let data1 = new Date()
 export default class ContaBancaria {
     private numeroConta : number = 2
     private agenciaConta : number = 3
     private saldoConta = 0
-    private extratoConta : string[] = []
+    private extratoConta : string[] = [`Extrato das transacoes - ${data1.toLocaleDateString('pt-BR')}`]
 
     public depositar(valor: number){
         if(valor > 0){
@@ -35,12 +36,13 @@ export default class ContaBancaria {
     
     public consultarSaldo(){
         console.log(this.saldoConta)
+        this.extratoConta.push(`Saldo na conta: ${this.saldoConta.toFixed(2)}`)
         return this.saldoConta
     }
     
     public exibeExtrato(){
-        console.log(`Extrato da Conta: ${this.numeroConta}`)
-        this.extratoConta.forEach(transacoes => {console.log(transacoes)})
-        console.log(`Saldo atual: ${this.saldoConta.toFixed(2)}`)
+        return this.extratoConta
     }
+    
+    
 }

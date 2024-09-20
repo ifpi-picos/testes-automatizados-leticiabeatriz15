@@ -40,5 +40,15 @@ describe("Testando classe ContaBancaria", () => {
   
   })
 
+  test("Testando o extrato", () => {
+    conta.depositar(100)
+    conta.sacar(20)
+    conta.transferencia(30, conta2)
+    let data = new Date()
+    let retorno = [`Extrato das transacoes - ${data.toLocaleDateString('pt-BR')}`,`Valor depositado: 100.00`, `Valor sacado: 20.00`, `Valor transferido: 30.00 Agência: 3 Número da conta: 2`]
+    expect(conta.exibeExtrato()).toEqual(retorno)
+
+  })
+
 });
 
